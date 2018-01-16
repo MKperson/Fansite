@@ -11,5 +11,6 @@ namespace FanSite.Models
         public DateTime Date { get; set; }
         public string Story { get; set; }
 
+
     }
 }

@@ -29,6 +29,11 @@ namespace FanSite.Controllers
 
             return View();
         }
+        [HttpPost]
+        public IActionResult PostStory()
+        {
+            return View("Stories");
+        }
 
         public IActionResult Error()
         {
