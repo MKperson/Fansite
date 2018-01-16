@@ -30,8 +30,11 @@ namespace FanSite.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult PostStory()
+        public IActionResult PostStory(string title,DateTime date,string story)
         {
+            ViewData["Title"] = title;
+            ViewData["Date"] = date.ToShortDateString();
+            ViewData["Story"] = story;
             return View("Stories");
         }
 

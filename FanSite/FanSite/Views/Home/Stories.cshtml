@@ -1,4 +1,6 @@
-﻿
+﻿@{ 
+    Layout = null;
+}
 @model StoryModel
 <body>
     <p>
@@ -25,6 +27,12 @@
             </div>
         </form>
        
+           
+        <p>
+            @ViewData["Title"]<br />
+            @ViewData["Date"]<br />
+            @ViewData["Story"]
+        </p>
 
     </div>
 </body>
