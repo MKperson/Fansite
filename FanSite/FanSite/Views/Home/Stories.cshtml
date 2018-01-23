@@ -4,22 +4,22 @@
 @model StoryModel
 <body>
     <p>
-        @ViewData["Message"]
+        
 
     </p>
     <div>
-        <form asp-action="PostStory" method="post">
-            <div class="form-group">
+        <form asp-action="Stories">
+            <div>
                 <label asp-for="Title">Title:</label>
-                <input class="form-control" asp-for="Title" />
+                <input  asp-for="Title" />
             </div>
             <div class="form-group">
                 <label asp-for="Date">Date:</label>
-                <input type="date" class="form-control" asp-for="Date" />
+                <input type="date"  asp-for="Date" />
             </div>
             <div class="form-group">
                 <label asp-for="Story">Story:<br /></label>
-                <textarea class="form-control" asp-for="Story"></textarea>
+                <textarea  asp-for="Story"></textarea>
             </div>
             <div class="form-group">
                 <br />
@@ -29,9 +29,10 @@
        
            
         <p>
-            @ViewData["Title"]<br />
-            @ViewData["Date"]<br />
-            @ViewData["Story"]
+            @if (Model != null) {
+            @Model.Title
+            @Model.Date
+            @Model.Story}
         </p>
 
     </div>

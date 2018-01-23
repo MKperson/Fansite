@@ -23,19 +23,19 @@ namespace FanSite.Controllers
             return View();
         }
 
-        public IActionResult Stories()
+        public ViewResult Stories(string title, DateTime date,string story)
         {
-            ViewData["Message"] = "Your Story page.";
+            StoryModel post = new StoryModel { Title = title, Date = date, Story = story };
 
-            return View();
+            return View(post);
         }
         [HttpPost]
-        public IActionResult PostStory(string title,DateTime date,string story)
+        public IActionResult PostStory()
         {
-            ViewData["Title"] = title;
-            ViewData["Date"] = date.ToShortDateString();
-            ViewData["Story"] = story;
-            return View("Stories");
+            //ViewData["Title"] = title;
+            //ViewData["Date"] = date.ToShortDateString();
+            //ViewData["Story"] = story;
+            return View();
         }
 
         public IActionResult Error()
