@@ -2,16 +2,14 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>TriviaQuiz</title>
 </head>
 <body>
-    <form method = "post" >
+    <form method="post">
         What is Emma Watson's Name?
         <div>
             <input type="radio" name="Q1" value="a" />Emma Watson<br />
@@ -19,6 +17,7 @@
             <input type="radio" name="Q1" value="c" />Ashley Banks<br />
             <input type="radio" name="Q1" value="d" />Hermione Granger<br />
             <!--<button type="submit">Submit</button>-->
+         
         </div>
         How old was she when she started acting?
         <div>
@@ -50,17 +49,24 @@
             <input type="radio" name="Q5" value="b" />French<br />
             <input type="radio" name="Q5" value="c" />Scottish<br />
             <input type="radio" name="Q5" value="d" />Bulgarian<br />
-            <button type="submit" >Submit</button>
+            <button type="submit">Submit</button>
         </div>
     </form>
-    
-    @{ if (Model.Test() != 0)
+
+    @{ 
+        
+        if (Model.Test() != 0)
         {
-           @:<h3>You got @Model.Test() Correct!!!</h3> 
- 
+            @:<h3>You got @Model.Test() Correct!!!</h3>
+           
+            
+
+
+            
+
         }
 
     }
-    
+
 </body>
 </html>

@@ -24,6 +24,6 @@ namespace FanSite.Controllers
         //Form With Questions and Radio buttons DONE
         //5-10 questions DONE
         //display right or wrong for each answer
-        //total right
+        //total right DONE
     }
 }

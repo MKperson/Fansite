@@ -8,6 +8,7 @@ namespace FanSite.Models
     public class TriviaLogic
     {
         private string q1, q2, q3, q4, q5;
+        
         public TriviaLogic()
         {
             q1 = null;
@@ -18,6 +19,7 @@ namespace FanSite.Models
         }
         public TriviaLogic(string Q1, string Q2, string Q3, string Q4, string Q5)
         {
+            
             q1 = Q1;
             q2 = Q2;
             q3 = Q3;
@@ -30,25 +32,30 @@ namespace FanSite.Models
             int num = 0;
             if (q1 == "a")
             {
+                
                 num++;
             }
             if (q2 == "c")
             {
+               
                 num++;
             }
             if (q3 == "a")
             {
+                
                 num++;
             }
             if (q4 == "d")
             {
+                
                 num++;
             }
             if (q5 == "a")
             {
+                
                 num++;
             }
-
+            
             return num;
         }
 
