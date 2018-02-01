@@ -23,6 +23,7 @@ namespace FanSite.Repositories
         }
         public List<StoryModel> GetAllStorys()
         {
+            
             return storys;
         }
     }

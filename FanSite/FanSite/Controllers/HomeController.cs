@@ -11,8 +11,12 @@ namespace FanSite.Controllers
 {
     public class HomeController : Controller
     {
-        
 
+        private IStoryRepo storyRepository;
+        public HomeController(IStoryRepo repo)
+        {
+            storyRepository = repo;
+        }
         
         public IActionResult Index()
         {
@@ -43,7 +47,7 @@ namespace FanSite.Controllers
         }
         public ViewResult AllStorys()
         {
-            return View();
+            return View(storyRepository.GetAllStorys());
         }
         
         public IActionResult Error()
