@@ -9,7 +9,7 @@ namespace FanSite.Repositories
     public interface IStoryRepo
     {
         List<StoryModel> GetAllStorys();
-        
+        void Add(StoryModel s);
 
     }
 }

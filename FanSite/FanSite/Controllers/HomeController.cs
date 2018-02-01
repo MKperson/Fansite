@@ -34,7 +34,10 @@ namespace FanSite.Controllers
         public ViewResult Stories(string title, DateTime date,string story)
         {
             StoryModel post = new StoryModel { Title = title, Date = date, Story = story };
-
+            if (title != null)
+            {             
+                storyRepository.Add(post);
+            }
             return View(post);
         }
         [HttpPost]
@@ -45,7 +48,7 @@ namespace FanSite.Controllers
             //ViewData["Story"] = story;
             return View();
         }
-        public ViewResult AllStorys()
+        public ViewResult AllStories()
         {
             return View(storyRepository.GetAllStorys());
         }

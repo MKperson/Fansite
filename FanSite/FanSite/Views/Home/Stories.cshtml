@@ -15,11 +15,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Date">Date:</label>
-                <input type="date"  asp-for="Date" />
+                <input type="date" value="" asp-for="Date" />
             </div>
             <div class="form-group">
                 <label asp-for="Story">Story:<br /></label>
-                <textarea  asp-for="Story" rows="5"></textarea>
+                <textarea  asp-for="Story" style="resize:none" rows="6" cols="36"  ></textarea>
             </div>
             <div class="form-group">
                 <br />
@@ -29,10 +29,11 @@
        
            
         <p>
-            @if (Model != null) {
-            @Model.Title
-            @Model.Date
-            @Model.Story}
+            @if (Model.Title != null) {
+            @Model.Title <br />
+            @Model.Date.ToShortDateString()<br />
+            @Model.Story<br />
+            }
         </p>
 
     </div>

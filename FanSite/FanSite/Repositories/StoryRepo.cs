@@ -26,5 +26,9 @@ namespace FanSite.Repositories
             
             return storys;
         }
+        public void Add(StoryModel s)
+        {
+            storys.Add(s);
+        }
     }
 }

@@ -21,6 +21,12 @@ namespace FanSite.Repositories
             storys.Add(story);
 
         }
+
+        public void Add(StoryModel s)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<StoryModel> GetAllStorys()
         {
             return storys;
