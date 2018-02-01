@@ -5,11 +5,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FanSite.Models;
+using FanSite.Repositories;
 
 namespace FanSite.Controllers
 {
     public class HomeController : Controller
     {
+        
+
+        
         public IActionResult Index()
         {
             ViewData["Message"] = "The Home page.";
@@ -37,7 +41,11 @@ namespace FanSite.Controllers
             //ViewData["Story"] = story;
             return View();
         }
-
+        public ViewResult AllStorys()
+        {
+            return View();
+        }
+        
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

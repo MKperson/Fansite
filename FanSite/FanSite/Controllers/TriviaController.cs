@@ -15,10 +15,10 @@ namespace FanSite.Controllers
             return View("TriviaQuiz",logic);
         }*/
         //[HttpPost]
-        public IActionResult Index(string Q1,string Q2,string Q3,string Q4,string Q5)
+        public IActionResult Index(string Q1, string Q2, string Q3, string Q4, string Q5)
         {
             TriviaLogic logic = new TriviaLogic(Q1, Q2, Q3, Q4, Q5);
-            return View("TriviaQuiz",logic);
+            return View("TriviaQuiz", logic);
         }
         //TODO Multipule Choice
         //Form With Questions and Radio buttons DONE

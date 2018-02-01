@@ -1,0 +1,20 @@
+﻿@model List<FanSite.Models.StoryModel>
+
+@{Layout = null;}
+
+
+@{
+    
+    foreach (var s in Model)
+    {
+        @:Title: @s.Title <br />
+        @:Date: @s.Date.ToString("mm/dd/yyyy") <br />
+        @:Story @s.Story<br />
+
+
+
+
+    }
+}
+
+
