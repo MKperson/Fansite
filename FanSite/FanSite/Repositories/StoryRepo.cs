@@ -8,8 +8,8 @@ namespace FanSite.Repositories
 {
     public class StoryRepo : IStoryRepo
     {
-        List<StoryModel> storys = new List<StoryModel>();
-        public StoryRepo()
+        static List<StoryModel> storys = new List<StoryModel>();
+        /*public StoryRepo()
         {
             StoryModel story = new StoryModel { Title = "Me and She", Date = DateTime.Parse("01/18/2018") , Story = "We did a thing" };
             storys.Add(story);
@@ -20,7 +20,7 @@ namespace FanSite.Repositories
             story = new StoryModel { Title = "Quitage", Date = DateTime.Parse("01/04/2018"), Story = "We have the snich" };
             storys.Add(story);
 
-        }
+        }*/
         public List<StoryModel> GetAllStorys()
         {
             
