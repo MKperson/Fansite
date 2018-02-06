@@ -50,7 +50,8 @@ namespace FanSite.Controllers
         }
         public ViewResult AllStories()
         {
-            return View(storyRepository.GetAllStorys());
+            var storys = storyRepository.GetAllStorys();
+            return View(storys);
         }
         
         public IActionResult Error()
