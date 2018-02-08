@@ -1,14 +1,12 @@
-﻿@{ 
+﻿@{
     Layout = null;
-    }
+}
 @model PictureClass
-
 <h2>Gallery</h2>
 <body>
     <p>
-        (TODO Add Pictures)
+        
     </p>
-    
 
 </body>
 <html>
@@ -41,19 +39,22 @@
 
         foreach (var fN in temp.FileNames)
         {
-    <div class="gallery">
-        <a target="_blank" href="~/images/@fN">
-            <img height="400" src="~/images/@fN" alt="@fN">
-        </a>
+            <div class="gallery">
+                <a target="_blank" href="~/images/@fN">
+                    <img height="400" src="~/images/@fN" alt="@fN">
+                </a>
+                @{string[] sub = fN.Split('.');
+                    
 
-        <div class="desc">@fN</div>
-    </div>
+
+                        }
+                <div class="desc">@sub[0]</div>
+            </div>
 
         }
-    
-        }
-    
+
+    }
+
 
 </body>
 </html>
-

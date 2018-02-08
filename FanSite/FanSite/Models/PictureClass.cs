@@ -23,7 +23,7 @@ namespace FanSite.Models
             }
             catch(Exception e)
             {
-                //NOP
+                Console.WriteLine(e);
             }
 
             FileNames = files.GetFiles().Select(x => x.Name).ToList();
