@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FanSite.Repositories;
+using FanSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FanSite
 {
@@ -23,6 +25,9 @@ namespace FanSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(
+                    Configuration["Data:FanSite:ConnectionString"]));
             services.AddTransient<IStoryRepo, StoryRepo>();
         }
 

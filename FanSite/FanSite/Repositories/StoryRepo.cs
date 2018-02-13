@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FanSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FanSite.Repositories
 {
     public class StoryRepo : IStoryRepo
     {
+        private ApplicationDbContext context;
+
+        public StoryRepo(ApplicationDbContext ctx)
+        {
+            context = ctx;
+        }
         static List<StoryModel> storys = new List<StoryModel>();
         /*public StoryRepo()
         {
@@ -23,12 +30,18 @@ namespace FanSite.Repositories
         }*/
         public List<StoryModel> GetAllStorys()
         {
+            return context.Storys.ToList();
+        }
+        /*public List<StoryModel> GetAllStorys()
+        {
             
             return storys;
-        }
+        }*/
         public void Add(StoryModel s)
         {
-            storys.Add(s);
+            context.Storys.Update(s);
+            context.SaveChanges();
+            //storys.Add(s);
         }
     }
 }
