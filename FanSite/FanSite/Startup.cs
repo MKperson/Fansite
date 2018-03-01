@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FanSite.Repositories;
 using FanSite.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace FanSite
 {
@@ -29,6 +30,10 @@ namespace FanSite
                 options => options.UseSqlServer(
                     Configuration["Data:FanSite:ConnectionString"]));
             services.AddTransient<IStoryRepo, StoryRepo>();
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,7 @@ namespace FanSite
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
