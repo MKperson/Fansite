@@ -11,6 +11,7 @@ namespace FanSite.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public int StoryModelID { get; set; }
+        public User Member { get; set; }
 
 
     }

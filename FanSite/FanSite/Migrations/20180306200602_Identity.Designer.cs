@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace FanSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180306183648_Identity")]
+    [Migration("20180306200602_Identity")]
     partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +29,15 @@ namespace FanSite.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<string>("MemberId");
+
                     b.Property<string>("Name");
 
                     b.Property<int>("StoryModelID");
 
                     b.HasKey("FanID");
+
+                    b.HasIndex("MemberId");
 
                     b.HasIndex("StoryModelID");
 
@@ -108,6 +113,9 @@ namespace FanSite.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -147,6 +155,8 @@ namespace FanSite.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -214,8 +224,27 @@ namespace FanSite.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("FanSite.Models.User", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<int>("UserId");
+
+                    b.ToTable("User");
+
+                    b.HasDiscriminator().HasValue("User");
+                });
+
             modelBuilder.Entity("FanSite.Models.Fan", b =>
                 {
+                    b.HasOne("FanSite.Models.User", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId");
+
                     b.HasOne("FanSite.Models.StoryModel")
                         .WithMany("Fans")
                         .HasForeignKey("StoryModelID")

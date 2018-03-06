@@ -15,6 +15,7 @@ namespace FanSite.Models
             : base(options) { }
         public DbSet<StoryModel> Storys { get; set; }
         public DbSet<Fan> Fans { get; set; }
+        
 
 
 

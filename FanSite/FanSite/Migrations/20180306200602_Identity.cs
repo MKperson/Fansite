@@ -9,6 +9,11 @@ namespace FanSite.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "MemberId",
+                table: "Fans",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -27,9 +32,13 @@ namespace FanSite.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: true),
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
@@ -155,6 +164,11 @@ namespace FanSite.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Fans_MemberId",
+                table: "Fans",
+                column: "MemberId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
@@ -192,10 +206,22 @@ namespace FanSite.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Fans_AspNetUsers_MemberId",
+                table: "Fans",
+                column: "MemberId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Fans_AspNetUsers_MemberId",
+                table: "Fans");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -216,6 +242,14 @@ namespace FanSite.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Fans_MemberId",
+                table: "Fans");
+
+            migrationBuilder.DropColumn(
+                name: "MemberId",
+                table: "Fans");
         }
     }
 }
