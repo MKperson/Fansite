@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FanSite.Models;
 using FanSite.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FanSite.Controllers
 {
@@ -17,7 +18,7 @@ namespace FanSite.Controllers
         {
             storyRepository = repo;
         }
-        
+        [Authorize]
         public IActionResult Index()
         {
             ViewData["Message"] = "The Home page.";
