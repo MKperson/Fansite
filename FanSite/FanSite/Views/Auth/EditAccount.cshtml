@@ -1,0 +1,13 @@
+﻿@model AccountEditModel
+
+<div class="bg-primary m-1 p-1 text-white"><h4>Edit Account</h4></div>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="EditAccount" method="post">
+    <input type="hidden" name="UserId" value="@Model.User.Id" />
+
+    <table class="table table-bordered table-sm"></table>
+
+    <table class="table table-bordered table-sm"></table>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

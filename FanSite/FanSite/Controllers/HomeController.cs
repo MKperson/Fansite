@@ -18,7 +18,8 @@ namespace FanSite.Controllers
         {
             storyRepository = repo;
         }
-        [Authorize]
+        
+
         public IActionResult Index()
         {
             ViewData["Message"] = "The Home page.";
@@ -31,7 +32,8 @@ namespace FanSite.Controllers
 
             return View();
         }
-
+        //public ViewResult Stories() => View();
+        //[HttpPost]
         public ViewResult Stories(string title, DateTime date,string story)
         {
             StoryModel post = new StoryModel { Title = title, Date = date, Story = story };

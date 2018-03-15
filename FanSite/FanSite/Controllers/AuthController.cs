@@ -64,6 +64,28 @@ namespace FanSite.Controllers
         }
 
 
+        public async Task<IActionResult> EditAccount(string id)
+        {
+            IdentityUser user = await userManager.FindByIdAsync(id);
+
+            return View(new AccountEditModel
+            { User = user
+            });
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditAccount(AccountModificationModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return await EditAccount(model.UserId);
+            }
+        }
+
                /* ******************* *
                 * Role administration *
                 * ******************* */
