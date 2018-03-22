@@ -20,13 +20,14 @@ namespace FanSite.Models
             try
             {
                 fileinfos = files.GetFiles();
+                FileNames = files.GetFiles().Select(x => x.Name).ToList();
             }
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
 
-            FileNames = files.GetFiles().Select(x => x.Name).ToList();
+            
             
             
         }
